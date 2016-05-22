@@ -1,0 +1,3 @@
+This is the test application to find all possible rates for the clk/vt8500 driver of the Linux kernel.
+
+The procedure of searching requires some computations, impossible at the kernel mode. That is why this applicaion has been created.
