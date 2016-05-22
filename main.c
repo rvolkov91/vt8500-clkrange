@@ -147,9 +147,9 @@ static int wm8650_find_pll_bits_improvement1(unsigned long rate,
 	min_err = ULONG_MAX;
 	for (*divisor1 = 5; *divisor1 >= 3; (*divisor1)--) {
 		O1 = rate * *divisor1 * (1 << (*divisor2));
-		*multiplier = O1 / parent_rate;
 		rate_err = O1 % parent_rate;
 		if (rate_err < min_err) {
+			*multiplier = O1 / parent_rate;
 			if (rate_err == 0)
 				return 0;
 
