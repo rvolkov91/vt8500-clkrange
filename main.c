@@ -147,12 +147,12 @@ static int wm8650_find_pll_bits_improvement1(unsigned long rate,
 	min_err = ULONG_MAX;
 	for (*divisor1 = 5; *divisor1 >= 3; (*divisor1)--) {
 		O1 = rate * *divisor1 * (1 << (*divisor2));
+		*multiplier = O1 / parent_rate;
 		rate_err = O1 % parent_rate;
 		if (rate_err < min_err) {
 			if (rate_err == 0)
 				return 0;
 
-			*multiplier = O1 / parent_rate;
 			min_err = rate_err;
 		}
 	}
@@ -179,6 +179,11 @@ int main()
 		if (!vt8500_find_pll_bits_45(i, VT8500_WM8505_PARENT_RATE,
 			&mul1, &div1))
 		{
+			if ((VT8500_WM8505_PARENT_RATE / div1 * mul1) != i) {
+				fprintf(stderr, "Sanity check failed\n");
+				return 1;
+			}
+
 			fprintf(stdout, rates_cnt ? ",%lu" : "%lu", i);
 			rates_cnt++;
 		}
@@ -196,6 +201,13 @@ int main()
 		if (!wm8650_find_pll_bits_45(i, WM8650_PARENT_RATE,
 			&mul1, &div1, &div2))
 		{
+			if (((WM8650_PARENT_RATE * mul1) /
+				(div1 * (1 << div2))) != i)
+			{
+				fprintf(stderr, "Sanity check failed\n");
+				return 1;
+			}
+
 			fprintf(stdout, rates_cnt ? ",%lu" : "%lu", i);
 			rates_cnt++;
 		}
@@ -213,6 +225,13 @@ int main()
 		if (!wm8650_find_pll_bits_improvement1(i, WM8650_PARENT_RATE,
 			&mul1, &div1, &div2))
 		{
+			if (((WM8650_PARENT_RATE * mul1) /
+				(div1 * (1 << div2))) != i)
+			{
+				fprintf(stderr, "Sanity check failed\n");
+				return 1;
+			}
+
 			fprintf(stdout, rates_cnt ? ",%lu" : "%lu", i);
 			rates_cnt++;
 		}
