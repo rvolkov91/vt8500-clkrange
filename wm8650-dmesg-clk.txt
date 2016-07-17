@@ -1,0 +1,15 @@
+[    0.000000] vtwm_pll_recalc_rate: entry
+[    0.000000] vtwm_pll_recalc_rate: rate is 600000000
+[    0.000000] vtwm_pll_clk_init: leave
+[    0.000000] vtwm_pll_recalc_rate: entry
+[    0.000000] vtwm_pll_recalc_rate: rate is 350000000
+[    0.000000] vtwm_pll_clk_init: leave
+[    0.000000] vtwm_pll_recalc_rate: entry
+[    0.000000] vtwm_pll_recalc_rate: rate is 330000000
+[    0.000000] vtwm_pll_clk_init: leave
+[    0.000000] vtwm_pll_recalc_rate: entry
+[    0.000000] vtwm_pll_recalc_rate: rate is 333333333
+[    0.000000] vtwm_pll_clk_init: leave
+[    0.000000] vtwm_pll_recalc_rate: entry
+[    0.000000] vtwm_pll_recalc_rate: rate is 400000000
+[    0.000000] vtwm_pll_clk_init: leave
